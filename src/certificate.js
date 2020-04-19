@@ -1,12 +1,3 @@
-/////////////////////////////////////////////////////////////////////////////////////
-//   Filename: /Volumes/Data/perso/Code/nodejs/deplacement-covid-19/src/certificate.js
-//   Path: /Volumes/Data/perso/Code/nodejs/deplacement-covid-19
-//   Created Date: Sunday, April 19th 2020, 2:55:15 am
-//   Author: Charles Serra
-//   
-//   Copyright (c) 2020 Epsilog
-/////////////////////////////////////////////////////////////////////////////////////
-
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
