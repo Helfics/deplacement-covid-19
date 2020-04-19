@@ -1,3 +1,12 @@
+<!-- *********************************************************************************************
+*   <copyright company="Epsilog">
+*      All rights reserved Copyright (c) 2020 Epsilog
+*      This computer program may not be used, copied, distributed, corrected, modified,
+*      translated, transmitted or assigned without Epsilog's prior written authorization
+*   </copyright>
+*********************************************************************************************** -->
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -29,7 +38,7 @@
     <title>COVID-19 – Générateur d'attestation de déplacement dérogatoire</title>
 </head>
 <body>
-    <header role="banner" class="wrapper">
+    <header role="banner" class="wrapper express">
         <img class="logo" src="/MIN_Interieur_RVB.svg" alt="Ministère de l'intérieur. Liberté, égalité, fraternité.">
         <div>
             <h1 class="flex flex-wrap">
@@ -52,11 +61,38 @@
 
     <div class="wrapper">
 
+        <div class="text-center mt-5 express-mode">
+
+            <div class="express">
+                <a href="#" id="express-info">Comment utiliser le mode express?</a>
+
+                <div class="d-none" id="express-tuto">
+                    <b>Comment utiliser le mode express</b> <a href="#" id="express-tuto-close">(fermer)</a><br />
+                    1) Générer une attestation "normalement"<br />
+                    2) Cliquer sur "Exporter ce profil"<br />
+                    3) Copier le contenu exporté ailleurs sur votre téléphone (messenger, notes...): Il sera nécessaire de le coller à chaque utilisation du mode express.<br />
+                    4) Cliquer sur "Mode Express", coller le profil, choisir un motif, une date de sortie et une heure de sortie puis générer l'attestation.
+                </div>
+            </div>
+
+            <button type="button" id="express-btn" class="btn btn-primary btn-attestation express"><span>Mode express</span></button>
+
+            <div id="profil" class="form-group d-none">
+                <p class="exemple">Collez le profil ici (récupéré depuis un export)</p>
+                <textarea></textarea>
+            </div>
+
+            <p id="current-profil" class="d-none">
+                <span>Profil collé: </span>
+                <span class="value"></span>
+            </p>
+        </div>
+
         <form id="form-profile" accept-charset="UTF-8">
-            <h2 class="titre-2">Remplissez en ligne votre attestation numérique :</h2>
-            <p class="text-alert">Tous les champs sont obligatoires.</p>
+            <h2 class="titre-2 express">Remplissez en ligne votre attestation numérique :</h2>
+            <p class="text-alert express">Tous les champs sont obligatoires.</p>
             
-            <div class="form-group">
+            <div class="form-group express">
                 <label for="field-firstname" id="field-firstname-label">Prénom</label>
                 <div class="input-group  align-items-center">
                     <input
@@ -75,7 +111,7 @@
                 <p class="exemple"></p>
             </div>
             
-            <div class="form-group">
+            <div class="form-group express">
                 <label for="field-lastname" id="field-lastname-label">Nom</label>
                 <div class="input-group  align-items-center">
                     <input
@@ -94,7 +130,7 @@
                 <p class="exemple"></p>
             </div>
             
-            <div class="form-group">
+            <div class="form-group express">
                 <label for="field-birthday" id="field-birthday-label">Date de naissance (au format jj/mm/aaaa)</label>
                 <div class="input-group  align-items-center">
                     <input
@@ -115,7 +151,7 @@
                 <p class="exemple"></p>
             </div>
             
-            <div class="form-group">
+            <div class="form-group express">
                 <label for="field-lieunaissance"  id="field-lieunaissance-label">Lieu de naissance</label>
                 <div class="input-group  align-items-center">
                     <input
@@ -132,7 +168,7 @@
                 <p class="exemple"></p>
             </div>
             
-            <div class="form-group">
+            <div class="form-group express">
                 <label for="field-address" id="field-address-label">Adresse</label>
                 <div class="input-group  align-items-center">
                     <input
@@ -150,7 +186,7 @@
                 <p class="exemple"></p>
             </div>
             
-            <div class="form-group">
+            <div class="form-group express">
                 <label for="field-town" id="field-town-label">Ville</label>
                 <div class="input-group  align-items-center">
                     <input
@@ -168,7 +204,7 @@
                 <p class="exemple"></p>
             </div>
             
-            <div class="form-group">
+            <div class="form-group express">
                 <label for="field-zipcode" id="field-zipcode-label" >Code Postal</label>
                 <div class="input-group  align-items-center">
                     <input
@@ -243,18 +279,24 @@
                     <span class="validity" aria-hidden="true"></span>
                 </div>
             </div>
-            
-            
+
             <p class="text-center mt-5">
                 <button type="button" id="generate-btn" class="btn btn-primary btn-attestation"><span ><i class="fa fa-file-pdf inline-block mr-1"></i>  Générer mon attestation</span></button>
             </p>
+
+            <div id="export" class="express">
+                <p class="text-center mt-5">
+                    <button type="button" class="btn btn-primary btn-attestation"><span>Exporter ce profil</span></button>
+                </p>
+                <textarea class="d-none"></textarea>
+            </div>
 
             <div class="bg-primary  d-none" id="snackbar">
               L'attestation est téléchargée sur votre appareil.
             </div>
         </form>
     </div>
-    <div class="">
+    <div class="express">
         <p class="github">
             Le code source de ce service est consultable sur <a href="https://github.com/LAB-MI/deplacement-covid-19" class="github-link">Github</a>.
         </p>
@@ -264,7 +306,7 @@
         <img class="center" src="/logo_dnum.svg" alt="logo dnum">
     </div>
     </main>
-    <footer role="contentinfo" class="main-footer">
+    <footer role="contentinfo" class="main-footer express">
         <div class="footer-links">
             <a href="./confidentialite.html" title="Confidentialité - nouvelle page" target="_blank" class="footer-line footer-link">Confidentialité</a>
             <a href="https://www.interieur.gouv.fr/Infos-du-site/Mentions-legales" title="Mentions légales - nouvelle page" target="_blank" class="footer-line footer-link">Mentions légales</a>

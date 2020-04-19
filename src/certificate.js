@@ -1,3 +1,13 @@
+/////////////////////////////////////////////////////////////////////////////////////
+//   Filename: /Volumes/Data/perso/Code/nodejs/deplacement-covid-19/src/certificate.js
+//   Path: /Volumes/Data/perso/Code/nodejs/deplacement-covid-19
+//   Created Date: Sunday, April 19th 2020, 2:55:15 am
+//   Author: Charles Serra
+//   
+//   Copyright (c) 2020 Epsilog
+/////////////////////////////////////////////////////////////////////////////////////
+
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import './main.css'
@@ -251,6 +261,91 @@ $('#generate-btn').addEventListener('click', async event => {
     snackbar.classList.remove('show')
     setTimeout(() => snackbar.classList.add('d-none'), 500)
   }, 6000)
+})
+
+$('#express-info').addEventListener('click', async event => {
+  event.preventDefault()
+
+  $('#express-info').classList.add('d-none')
+  $('#express-tuto').classList.remove('d-none')
+
+})
+
+$('#express-tuto-close').addEventListener('click', async event => {
+  event.preventDefault()
+
+  $('#express-tuto').classList.add('d-none')
+  $('#express-info').classList.remove('d-none')
+
+})
+
+$('#express-btn').addEventListener('click', async event => {
+  event.preventDefault()
+
+  for(const element of $$('.express')){
+    element.classList.add('d-none')
+  }
+
+  for(const labelElement of $$('.form-check-label')){
+    const name = labelElement.attributes['for'].value.split('-')[1]
+    labelElement.innerHTML = name;
+  }
+
+  $('fieldset').classList.add('flex')
+
+  $('#profil').classList.remove('d-none')
+
+  loadProfile($('#profil textarea').value)
+})
+
+
+function loadProfile (serializedProfil){
+  try {
+    var profil = JSON.parse(serializedProfil)
+
+    for(const prop in profil){
+      $(`#field-${prop}`).value = profil[prop]
+    }
+
+    $("#current-profil").classList.remove('d-none');
+    $("#current-profil span.value").innerHTML = `${profil.firstname} ${profil.lastname}`
+
+  } catch (error) {
+    console.log(error)
+   }
+}
+
+$('#profil textarea').addEventListener('input', async event => {
+  event.preventDefault()
+
+  loadProfile(event.currentTarget.value)
+
+})
+
+$('#export button').addEventListener('click', async event => {
+  event.preventDefault()
+
+  saveProfile()
+
+  var profile = getProfile()
+  var cleanedProfil = {}
+
+  for(const prop in profile){
+    
+    if(!prop.startsWith('ox-')){
+      cleanedProfil[prop] = profile[prop]
+    }
+
+  }
+
+  delete cleanedProfil.datesortie
+  delete cleanedProfil.heuresortie
+
+  var serializedProfil = JSON.stringify(cleanedProfil)
+
+  $("#export textarea").classList.remove("d-none")
+  $("#export textarea").value = serializedProfil
+
 })
 
 $$('input').forEach(input => {

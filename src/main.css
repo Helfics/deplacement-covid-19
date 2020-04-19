@@ -1,3 +1,12 @@
+/* *********************************************************************************************
+*   <copyright company="Epsilog">
+*      All rights reserved Copyright (c) 2020 Epsilog
+*      This computer program may not be used, copied, distributed, corrected, modified,
+*      translated, transmitted or assigned without Epsilog's prior written authorization
+*   </copyright>
+*********************************************************************************************** */
+
+
 @font-face {
   font-family: 'marianne-bold';
   src: url('./fonts/marianne-bold-webfont.woff2') format('woff2'),
@@ -26,6 +35,39 @@ form, #alert-print {
 h1 {
 	font-size: 2em;
 
+}
+
+fieldset.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+fieldset.flex > div {
+  margin: 0 20px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 100px;
+}
+
+#express-info {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#express-info:hover {
+  color: #0A81FF;
+}
+
+#express-tuto {
+  text-align: left;
+}
+
+.express-mode {
+  padding: 5px;
+  border: solid 1px #000191;
+  border-radius: 5px;
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -74,11 +116,11 @@ a {
   margin-right: auto;
 }
 
-#form-profile .form-check {
+#form-profil .form-check {
   margin-bottom: 1rem;
 }
 
-#form-profile .form-check-label {
+#form-profil .form-check-label {
   font-weight: 400;
   transform: translateY(-2px);
 }
